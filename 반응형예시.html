@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>반응형 예시</title>
+  <script src="https://kit.fontawesome.com/1cd9cbfb2d.js" crossorigin="anonymous"></script>
+  <style>
+/* css변수 활용 - 미리 속성값을 지정하여 사용 */
+:root{
+--bg-b-color:#263343;
+--bg-w-color:#efefef;
+--text-w-color:#f0f4f5;
+--text-b-color:#333;
+--accent-color:#d49466;
+
+--padding:12px;
+--padding-lg:24px;
+
+--font-tit:36px;
+--font-lg:24px;
+--font-md:18px;
+--font-sm:14px;
+--font-mc:12px;
+}
+
+*{margin: 0; padding: 0; box-sizing: border-box;}
+ul,li{list-style: none;}
+a{text-decoration: none; color: inherit;}
+
+body{
+  font-family: "Monaco";
+  color: var(--text-w-color); /* root로 설정한 변수를 var()함수의 파라미터로 전달하여 적용 */
+  line-height: 1.6;
+}
+header{
+width: 100%;
+background-color: var(--bg-b-color);
+padding: var(--padding);
+position: fixed;
+z-index: 1;
+}
+header > .wrap{
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo{
+  font-size: var(--font-md);
+}
+.logo i{
+color: var(--accent-color);
+font-size: var(--font-lg);
+}
+
+.gnb{
+  display: flex;
+  gap:calc(var(--padding-lg) * 2);
+  font-size: var(--font-md);
+}
+
+.icon{
+  display: flex;
+  gap: var(--padding);
+  font-size: var(--font-md);
+}
+.toggleBtn{
+  position: absolute;
+  right: 32px;
+  color: var(--accent-color);
+  cursor: pointer;
+  display: none;
+}
+
+/* #banner */
+#banner{
+  width: 100%;
+  height: 500px;
+  background: url(img/bg.png) center -100px/cover ;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--text-b-color);
+}
+#banner h1{
+  font-size: var(--font-tit);
+}
+#banner p{
+  font-size: var(--font-md);
+  font-weight: bold;
+}
+
+/* #contents */
+#contents{
+  width: 100%;
+  background-color: var(--bg-w-color);
+}
+#contents > .wrap{
+  max-width: 1200px;
+  margin: auto;
+  padding: 80px 20px;
+}
+
+#contents h1{
+  font-size: var(--font-tit);
+  text-align: center;
+  margin-bottom: var(--padding-lg);
+  color: var(--text-b-color);
+}
+
+#contents .imgGroup{
+width: 100%;
+display: flex;
+}
+
+.imgGroup > li{
+padding: calc(var(--padding) / 2);
+}
+
+.imgGroup img{
+  display: block;
+  width: 100%;
+}
+
+
+
+/* 뷰포트가 1200픽셀 이하일 경우 */
+@media screen and (max-width:1200px){
+#banner{/*배경이미지의 위치 변경*/
+  background-position: center top;
+}
+}
+/* 뷰포트가 768픽셀 이하일 경우 */
+@media screen and (max-width:768px){
+:root{
+  --padding-lg:18px;
+}
+#contents .imgGroup{
+  flex-wrap: wrap;
+}
+.imgGroup > li{
+  width: 50%;
+}
+}
+/* 뷰포트가 640픽셀 이하일 경우 */
+@media screen and (max-width:640px){
+header > .wrap{
+  /* 세로 정렬로 변경 */
+  flex-direction: column;
+/* 왼쪽 정렬 */
+  align-items: flex-start;
+}
+.gnb{
+  /* 세로 정렬로 변경 */
+  flex-direction: column;
+  gap: 0;/*사이여백제거*/
+  width: 100%;
+  text-align: center;
+  display: none;
+}
+.gnb a{
+  display: block;
+  padding: var(--padding) 0;
+}
+.gnb a:hover{
+  background-color: var(--accent-color);
+}.icon{
+  display: none;
+width: 100%;
+justify-content: center;
+}
+/*icon과 gnb에 active클래스가 추가되면 화면에 나타남*/
+.icon.active, .gnb.active{
+  display: flex;
+}
+.toggleBtn{display: block;}
+.imgGroup > li{
+  width: 100%;
+}
+}
+
+  </style>
+</head>
+<body>
+  <header id="header">
+    <a href="#" class="toggleBtn">
+      <i class="fas fa-bars"></i>
+    </a>
+    <div class="wrap">
+      <h1 class="logo">
+        <i class="fab fa-drupal"></i>
+        <a href="#">COMPANY</a>
+      </h1>
+      <ul class="gnb">
+        <li><a href="#">about</a></li>
+        <li><a href="#">news</a></li>
+        <li><a href="#">portfolio</a></li>
+        <li><a href="#">contact</a></li>
+        <li><a href="#">board</a></li>
+      </ul>
+      <ul class="icon">
+        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+      </ul>
+    </div>
+  </header>
+  <section id="banner">
+    <div class="wrap">
+      <h1>TITLE</h1>
+      <p>some text...</p>
+    </div>
+  </section>
+  <section id="contents">
+    <div class="wrap">
+      <h1>TITLE</h1>
+      <ul class="imgGroup">
+        <li><img src="img/eye_1.jpg" alt="eye1"></li>
+        <li><img src="img/eye_2.jpg" alt="eye2"></li>
+        <li><img src="img/eye_3.jpg" alt="eye3"></li>
+        <li><img src="img/eye_4.jpg" alt="eye4"></li>
+      </ul>
+    </div>
+  </section>
+  <script>
+    //토글버튼,gnb, .icon선택
+    const toggleBtn = document.querySelector(".toggleBtn");
+    const gnb = document.querySelector(".gnb");
+    const icon = document.querySelector(".icon");
+    toggleBtn.addEventListener("click",() => {
+      //gnb와 icon에 active클래스를 추가 또는 제거
+      gnb.classList.toggle("active");
+      icon.classList.toggle("active");
+    })
+// 윈도우객체에 resize이벤트 생성
+    // 뷰포트가 640픽셀 이하일 경우 active클래스를 제거
+    window.addEventListener("resize", ()=>{
+      console.log(window.innerWidth)
+        if(window.innerWidth <= 640)
+        // gnb와 icon에 active클래스를 제거하여 메뉴를 접어줍니다
+        gnb.classList.remove("active")
+        icon.classList.remove("active")
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>미디어쿼리</title>
+<style>
+  @media 미디어_타입 and (조건에_대한_물음){
+    /* 
+    미디어 타입과 조건을 모두 만족할 때 덮어씌울 스타일 선언문
+    */
+  }
+  body{
+    background-color: lightgreen;
+  }
+/* 뷰포트가 1200픽셀 이하일 경우 */
+@media screen and (max-width:1200px){
+  body{background-color: lightblue;}
+}
+/* 뷰포트가 800픽셀 이하일 경우 */
+@media screen and (max-width:800px){
+  body{background-color: yellow;}
+}
+
+
+</style>
+</head>
+<body>
+<p>문서의 폭이 1200 픽셀 이하이면 배경색은 "연한 파랑"이고, 800픽셀 이하이면 "노란색"이고, 1200픽셀 이상이면 "연한 녹색"입니다.</p>
+  
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>메시지 입력창</title>
+<style>
+  /* calc()함수는 괄호 안에 표현식 하나를 받고, 표현식의 결과가 최종값이 되는데 여기서 표현식은 단순 계산식이면 됩니다 예) width: calc(30px - 20px) */
+.msg{
+display:flex;
+justify-content:space-around;
+align-items:center;
+height: 100px;
+padding:0.5em;
+border:1px solid black;
+font-size:1.5em;
+}
+.msg_txt{
+  /* 100px을 뺀 나머지 영역이 텍스트 공간이 된다(불필요한 여백이 제거됨) */
+  width:calc(100% - 100px);
+  height:100%;
+  border:none;
+  outline:none;
+  resize:none;
+  background-color: lightgoldenrodyellow;
+}
+.msg_send{
+  width:20%;/*전송버튼의 넓이를 %로 설정하면 버튼이 늘어나고 줄어드는 것이 보기 안좋음*/
+  width: 100px;/*고정값으로 변경*/
+  height:100%;
+  border-radius:8px;
+  background-color:#9ec4cf;
+}
+
+</style>
+
+</head>
+<body>
+  <div class="msg">
+    <textarea class="msg_txt"></textarea>
+    <button class="msg_send">전송</button>
+  </div>
+</body>
+</html>
